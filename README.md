@@ -37,3 +37,22 @@ CMD ["node", "src/index.js"]
     - `COPY` keyword copies the current directory to the current directory in the docker image which is `/app` that we defined in the above line which was `WORKDIR /app`.
     - `RUN` is used to run the given command and here it is used to run `npm install --production` command to install node dependencies in production mode.
     - Then we give the command that needs to be executed when the docker container starts using `CMD`.
+
+
+## Running the docker container
+
+- To build a docker container for the current project, run
+
+```bash
+docker build -t <your-project-name> .
+```
+
+- This will start building the docker container for current project.
+
+- Now we want to run the todo app that we created and containerized it in docker container. To run the docker container's app and connect it to our `localhost:3000` port, run
+
+```bash
+docker run -dp 3000:3000 <your-project-name>
+```
+
+- Now go to `localhost:3000` on your browser and the app (or whatever your project is) will be running on that port.
